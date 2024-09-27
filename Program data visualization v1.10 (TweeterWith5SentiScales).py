@@ -1,31 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# this code does the pre-processing of tweets based on hashtags
-#-> pops out unwanted data,removes sybmbols and punctuations
-# -> gets all the hashtags used 
-#-> segregates hashtags based on custom-made dictionary for anti and pro climate change
-# -> does sentiment analysis on sorted tweets having only anti and pro hashtags
-#->from line 149 to 153: it plots a bar graph showing occurance of hashtags
-#-> on line 74 and 75 there is list (dictionary), we have to update the list with more buzzwords. ..
-#I have written buzz words which I managed to get from tweets. [distribution is skewed as of now]
-# Next thing will be label the sorted tweets as -1 to +1 [Pending] [made a df which has senti score of vader & blob]
-# Train the model using LSTM [Pending]
-# Compare it with baseline models like vader/textblob etc [Pending]
 
-# space issue [solved by word segmenter]
-# remove duplicates
-#not cleaned properly
-#csv files are mode for tweeter 2023 and maston climate.
-#mastadom energy is more of news. so should be neglected as we did for tweeter2022
-#have tweaked values of some words in vader as thoses words are positive in our contenxt. such as 
-# "crisis,emergency "-> shows conerns of pro-climate chnage people
-# vader is more accurate than textblob. we can use hybrid approach as well
-# we might need to do some random sampleing of tweets for its positive or negative sentiment
-"""
-Created on Sat Oct  7 10:40:24 2023
 
-@author: Akrosh
-"""
+
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
@@ -110,7 +87,7 @@ hashtag_df.plot.bar(x="hashtag",y="count",title="most used hashtags")
 savefile=hashtag_df.to_csv('Twitter 2023 hashtags.csv')
 
 
-## ## Part is complete########################################################### this part is complete####
+
 
 
 pro=['climate justice','environmental justice', 'climate justice now', 'climate action','climate action now','climate change action', 'climate crisis', 'climate emergency']
@@ -323,7 +300,7 @@ word_df = word_df.nlargest(commonwords, columns="count")
 plt.figure(6)
 word_df.plot.bar(x="word",y="count",title="most used word")
 save_commonword=word_df.to_csv('commonwords.csv')
-##########
+
 
 
 
